@@ -8,10 +8,6 @@
 	[UnitPrice] [money] NOT NULL,
 	[Quantity] [smallint] NOT NULL,
 	[Discount] [real] NOT NULL,
-	[RequiredDate] [datetime] NULL,
-	[ShippedDate] [datetime] NULL,
-	[ShipVia] [int] NULL,
-	[Freight] [money] NULL,
-	[ShipName] [nvarchar](40) NULL,
-	[ShipAddress] [nvarchar](60) NULL
+	[RequiredDate] DATE NULL,
+	[ShippedDate] DATE NULL
 )

@@ -59,6 +59,8 @@
     <Folder Include="Schema" />
     <Folder Include="Schema\Tables" />
     <Folder Include="Scripts" />
+    <Folder Include="Schema\Programmability" />
+    <Folder Include="Schema\Programmability\Stored_Procedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Schema\Tables\Categories.sql" />
@@ -74,5 +76,10 @@
     <Build Include="Schema\Tables\Shippers.sql" />
     <Build Include="Schema\Tables\Suppliers.sql" />
     <Build Include="Schema\Tables\Territories.sql" />
+    <Build Include="Schema\Programmability\Stored_Procedures\GetProductChangesByRowVersion.sql" />
+    <Build Include="Schema\Programmability\Stored_Procedures\GetCustomerChangesByRowVersion.sql" />
+    <Build Include="Schema\Programmability\Stored_Procedures\GetEmployeeChangesByRowVersion.sql" />
+    <Build Include="Schema\Programmability\Stored_Procedures\GetOrderDetailsChangesByRowVersion.sql" />
+    <Build Include="Schema\Programmability\Stored_Procedures\GetDatabaseRowVersion.sql" />
   </ItemGroup>
 </Project>

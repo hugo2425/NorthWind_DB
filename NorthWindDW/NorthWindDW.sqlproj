@@ -22,6 +22,7 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <IncludeSchemaNameInFileName>True</IncludeSchemaNameInFileName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -60,7 +61,7 @@
     <Folder Include="Schema\Programamability" />
     <Folder Include="Schema\Tables" />
     <Folder Include="Schema\Tables\dbo" />
-    <Folder Include="Schema\Tables\stagging" />
+    <Folder Include="Schema\Tables\staging" />
     <Folder Include="Schema\Programamability\StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
@@ -70,14 +71,15 @@
     <Build Include="Schema\Programamability\StoredProcedures\UpdateLastPackageRowVersion.sql" />
     <Build Include="Schema\Tables\dbo\DimProduct.sql" />
     <Build Include="Schema\Tables\dbo\DimCustomer.sql" />
-    <Build Include="Schema\Tables\stagging\Customer.sql" />
+    <Build Include="Schema\Tables\staging\Customer.sql" />
     <Build Include="Schema\Programamability\StoredProcedures\DW_MergeDimCustomer.sql" />
-    <Build Include="Schema\Tables\stagging\Product.sql" />
+    <Build Include="Schema\Tables\staging\Product.sql" />
     <Build Include="Schema\Tables\dbo\DimEmployee.sql" />
-    <Build Include="Schema\Tables\stagging\Employee.sql" />
+    <Build Include="Schema\Tables\staging\Employee.sql" />
     <Build Include="Schema\Tables\dbo\FactSales.sql" />
-    <Build Include="Schema\Tables\stagging\Sales.sql" />
+    <Build Include="Schema\Tables\staging\Sales.sql" />
     <Build Include="Schema\Programamability\StoredProcedures\DW_MergeDimEmployee.sql" />
     <Build Include="Schema\Programamability\StoredProcedures\DW_MergeDimProduct.sql" />
+    <Build Include="Schema\Tables\staging\staging.sql" />
   </ItemGroup>
 </Project>

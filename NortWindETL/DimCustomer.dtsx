@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="DimCustomer"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{963D5274-A056-4878-93FE-6B48A72790E1}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{406D3F93-76C6-4836-AEBE-66A20A039A83}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -259,7 +259,7 @@ where [refTable].[CustomerID] = ?</property>
                   dataType="System.String"
                   description="Comando SQL para ejecutar."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXECUTE [dbo].[GetCustomerChangesByRowVersion] ?,?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">EXECUTE [dbo].[GetCustomerChangesByRowVersion] ?, ?</property>
                 <property
                   dataType="System.String"
                   description="Variable que contiene el comando SQL para ejecutar."
@@ -280,7 +280,7 @@ where [refTable].[CustomerID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Asignaciones entre los parámetros del comando SQL y las variables."
-                  name="ParameterMapping">"0:Input",{0AB40F22-8331-4EDA-88AB-E4A02699C021};"1:Input",{01249633-289F-4341-8489-B98C78572634};</property>
+                  name="ParameterMapping">"@endRow:Input",{0AB40F22-8331-4EDA-88AB-E4A02699C021};"@startRow:Input",{01249633-289F-4341-8489-B98C78572634};</property>
               </properties>
               <connections>
                 <connection
@@ -1037,7 +1037,7 @@ where [refTable].[CustomerID] = ?</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{EF9937B2-8616-42EB-BFE5-9FD6DD84EA21}"
-          SQLTask:SqlStatementSource="EXECUTE dbo.GetLastPackageRowVersion @tableName='Customer'"
+          SQLTask:SqlStatementSource="EXECUTE dbo.GetLastPackageRowVersion 'Customer'"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
             SQLTask:ResultName="LastRowVersion"
@@ -1096,7 +1096,7 @@ where [refTable].[CustomerID] = ?</property>
           SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] @tableName='Customer', @lastRowVersion=?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
-            SQLTask:DtsVariableName="User::LastRowValue"
+            SQLTask:DtsVariableName="User::dbts"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="3"
             SQLTask:ParameterSize="-1" />
@@ -1116,7 +1116,7 @@ where [refTable].[CustomerID] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
       DTS:CreationName=""
-      DTS:DTSID="{9DBB7E0C-BAB1-4411-B84F-62B51C42F427}"
+      DTS:DTSID="{9FD5A872-D213-492C-ADCD-107D2C451D6A}"
       DTS:From="Package\Get LastRowVersion"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 1"
@@ -1161,7 +1161,7 @@ where [refTable].[CustomerID] = ?</property>
         <NodeLayout
           Size="166,42"
           Id="Package\DF Add New Rows"
-          TopLeft="362,264" />
+          TopLeft="366,303" />
         <NodeLayout
           Size="201,42"
           Id="Package\Get Database RowVersion"
@@ -1169,55 +1169,33 @@ where [refTable].[CustomerID] = ?</property>
         <NodeLayout
           Size="173,42"
           Id="Package\Get LastRowVersion"
-          TopLeft="358,124" />
+          TopLeft="356,134" />
         <NodeLayout
           Size="181,42"
           Id="Package\Mergue Staging Rows"
-          TopLeft="353,345" />
+          TopLeft="357,384" />
         <NodeLayout
           Size="188,42"
           Id="Package\Truncate Staging Table"
-          TopLeft="352,189" />
+          TopLeft="356,228" />
         <NodeLayout
           Size="194,42"
           Id="Package\Update Last RowVersion"
-          TopLeft="353,424" />
+          TopLeft="357,463" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción]"
-          TopLeft="443.5,95">
+          TopLeft="442.5,95">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,29"
+              EndConnector="0,39"
               Start="0,0"
-              End="0,21.5">
+              End="0,31.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Restricción 1]"
-          TopLeft="445.25,166">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,23"
-              Start="0,0"
-              End="0,15.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15.5" />
+                    End="0,31.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1228,7 +1206,7 @@ where [refTable].[CustomerID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="445.5,231">
+          TopLeft="449.5,270">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1250,7 +1228,7 @@ where [refTable].[CustomerID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
-          TopLeft="444.25,306">
+          TopLeft="448.25,345">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1272,7 +1250,7 @@ where [refTable].[CustomerID] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 4]"
-          TopLeft="446.75,387">
+          TopLeft="450.75,426">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1292,6 +1270,28 @@ where [refTable].[CustomerID] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="446.25,176">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1301,21 +1301,45 @@ where [refTable].[CustomerID] = ?</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="139,42"
-          Id="Package\DF Add New Rows\Load staging"
-          TopLeft="260,232" />
-        <NodeLayout
           Size="162,42"
           Id="Package\DF Add New Rows\Get Row Changes"
           TopLeft="353,39" />
         <NodeLayout
-          Size="125,42"
-          Id="Package\DF Add New Rows\Búsqueda"
-          TopLeft="368,134" />
-        <NodeLayout
           Size="183,42"
           Id="Package\DF Add New Rows\Load Star - New Rows"
           TopLeft="446,234" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\DF Add New Rows\Load staging"
+          TopLeft="260,232" />
+        <NodeLayout
+          Size="125,42"
+          Id="Package\DF Add New Rows\Búsqueda"
+          TopLeft="368,134" />
+        <EdgeLayout
+          Id="Package\DF Add New Rows.Paths[Salida de origen de OLE DB]"
+          TopLeft="432.25,81">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DF Add New Rows.Paths[Salida de entradas no coincidentes de búsqueda]"
           TopLeft="450,176">
@@ -1386,28 +1410,6 @@ where [refTable].[CustomerID] = ?</property>
             <mssgm:EdgeLabel
               BoundingBox="-140.5690234375,27.824644549763,199.638046875,12.1953125"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DF Add New Rows.Paths[Salida de origen de OLE DB]"
-          TopLeft="432.25,81">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,53"
-              Start="0,0"
-              End="0,45.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

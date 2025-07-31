@@ -1,0 +1,503 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "es-ES",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/localhost;NorthWindDW",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "localhost",
+            "database": "NorthWindDW"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "UsernamePassword",
+          "kind": "SQL",
+          "path": "localhost;NorthWindDW",
+          "Username": "sa",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "Customer",
+        "columns": [
+          {
+            "name": "CustomerSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerSK"
+          },
+          {
+            "name": "CustomerID",
+            "dataType": "string",
+            "sourceColumn": "CustomerID"
+          },
+          {
+            "name": "CompanyName",
+            "dataType": "string",
+            "sourceColumn": "CompanyName"
+          },
+          {
+            "name": "ContactName",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ContactName"
+          },
+          {
+            "name": "ContactTitle",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ContactTitle"
+          },
+          {
+            "name": "Address",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Address"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Region"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country"
+          },
+          {
+            "name": "Phone",
+            "dataType": "string",
+            "sourceColumn": "Phone"
+          },
+          {
+            "name": "Fax",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Fax"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/localhost;NorthWindDW\",",
+                "    dbo_DimCustomer = Source{[Schema=\"dbo\",Item=\"DimCustomer\"]}[Data]",
+                "in",
+                "    dbo_DimCustomer"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Date",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateKey"
+          },
+          {
+            "name": "FullDate",
+            "dataType": "dateTime",
+            "sourceColumn": "FullDate"
+          },
+          {
+            "name": "DayNumberOfWeek",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DayNumberOfWeek"
+          },
+          {
+            "name": "DayNameOfWeek",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "DayNameOfWeek"
+          },
+          {
+            "name": "DayNumberOfMonth",
+            "dataType": "int64",
+            "sourceColumn": "DayNumberOfMonth"
+          },
+          {
+            "name": "DayNumberOfYear",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DayNumberOfYear"
+          },
+          {
+            "name": "WeekNumberOfYear",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "WeekNumberOfYear"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName"
+          },
+          {
+            "name": "MonthNumberOfYear",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "MonthNumberOfYear"
+          },
+          {
+            "name": "CalendarQuarter",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CalendarQuarter"
+          },
+          {
+            "name": "CalendarYear",
+            "dataType": "int64",
+            "sourceColumn": "CalendarYear"
+          },
+          {
+            "name": "CalendarSemester",
+            "dataType": "int64",
+            "sourceColumn": "CalendarSemester"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/localhost;NorthWindDW\",",
+                "    dbo_DimDate = Source{[Schema=\"dbo\",Item=\"DimDate\"]}[Data]",
+                "in",
+                "    dbo_DimDate"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Sales",
+        "columns": [
+          {
+            "name": "FactDateKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "FactDateKey"
+          },
+          {
+            "name": "OrderID",
+            "dataType": "int64",
+            "sourceColumn": "OrderID"
+          },
+          {
+            "name": "ProductSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductSK"
+          },
+          {
+            "name": "CustomerSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerSK"
+          },
+          {
+            "name": "EmployeeSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "EmployeeSK"
+          },
+          {
+            "name": "UnitPrice",
+            "dataType": "decimal",
+            "sourceColumn": "UnitPrice"
+          },
+          {
+            "name": "Quantity",
+            "dataType": "int64",
+            "sourceColumn": "Quantity"
+          },
+          {
+            "name": "Discount",
+            "dataType": "double",
+            "sourceColumn": "Discount"
+          },
+          {
+            "name": "OrderDate",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "OrderDate"
+          },
+          {
+            "name": "RequiredDate",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "RequiredDate"
+          },
+          {
+            "name": "ShippedDate",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "ShippedDate"
+          },
+          {
+            "type": "calculated",
+            "name": "Sales",
+            "dataType": "decimal",
+            "isDataTypeInferred": true,
+            "expression": "Sales[UnitPrice]*Sales[Quantity]",
+            "formatString": "#,0.00 \"€\";-#,0.00 \"€\";#,0.00 \"€\"",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"3082\" DisplayName=\"€ Español (España)\" Symbol=\"€\" PositivePattern=\"3\" NegativePattern=\"8\" /></Format>"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/localhost;NorthWindDW\",",
+                "    dbo_FactSales = Source{[Schema=\"dbo\",Item=\"FactSales\"]}[Data]",
+                "in",
+                "    dbo_FactSales"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "totalQuantity",
+            "expression": " SUM(Sales[Quantity])"
+          },
+          {
+            "name": "totalSales",
+            "expression": " SUM(Sales[Sales]) - SUM(Sales[Discount])"
+          }
+        ]
+      },
+      {
+        "name": "Product",
+        "columns": [
+          {
+            "name": "ProductSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductSK"
+          },
+          {
+            "name": "ProductID",
+            "dataType": "int64",
+            "sourceColumn": "ProductID"
+          },
+          {
+            "name": "ProductName",
+            "dataType": "string",
+            "sourceColumn": "ProductName"
+          },
+          {
+            "name": "SupplierName",
+            "dataType": "string",
+            "sourceColumn": "SupplierName"
+          },
+          {
+            "name": "SupplierPhone",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "SupplierPhone"
+          },
+          {
+            "name": "CategoryName",
+            "dataType": "string",
+            "sourceColumn": "CategoryName"
+          },
+          {
+            "name": "UnitPrice",
+            "dataType": "decimal",
+            "isHidden": true,
+            "sourceColumn": "UnitPrice"
+          },
+          {
+            "name": "UnitsInStock",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "UnitsInStock"
+          },
+          {
+            "name": "Estado",
+            "dataType": "boolean",
+            "sourceColumn": "Estado"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/localhost;NorthWindDW\",",
+                "    dbo_DimProduct = Source{[Schema=\"dbo\",Item=\"DimProduct\"]}[Data]",
+                "in",
+                "    dbo_DimProduct"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Employee",
+        "columns": [
+          {
+            "name": "EmployeeSK",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "EmployeeSK"
+          },
+          {
+            "name": "EmployeeID",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "EmployeeID"
+          },
+          {
+            "name": "Name",
+            "dataType": "string",
+            "sourceColumn": "Name"
+          },
+          {
+            "name": "Title",
+            "dataType": "string",
+            "sourceColumn": "Title"
+          },
+          {
+            "name": "BirthDate",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "BirthDate"
+          },
+          {
+            "name": "HireDate",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "HireDate"
+          },
+          {
+            "name": "Address",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Address"
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Region"
+          },
+          {
+            "name": "PostalCode",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "PostalCode"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country"
+          },
+          {
+            "name": "HomePhone",
+            "dataType": "string",
+            "sourceColumn": "HomePhone"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/localhost;NorthWindDW\",",
+                "    dbo_DimEmployee = Source{[Schema=\"dbo\",Item=\"DimEmployee\"]}[Data]",
+                "in",
+                "    dbo_DimEmployee"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "6e24f928-6a70-4181-85fe-12b813a2088f",
+        "fromTable": "Sales",
+        "fromColumn": "CustomerSK",
+        "toTable": "Customer",
+        "toColumn": "CustomerSK"
+      },
+      {
+        "name": "103927a9-f20a-41b8-bda6-f67d369b43c5",
+        "fromTable": "Sales",
+        "fromColumn": "FactDateKey",
+        "toTable": "Date",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "4842bea2-2205-4559-9c4e-7f7260edfced",
+        "fromTable": "Sales",
+        "fromColumn": "EmployeeSK",
+        "toTable": "Employee",
+        "toColumn": "EmployeeSK"
+      },
+      {
+        "name": "f9676ac2-d451-43db-baee-204694a0903b",
+        "fromTable": "Sales",
+        "fromColumn": "ProductSK",
+        "toTable": "Product",
+        "toColumn": "ProductSK"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "700"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}

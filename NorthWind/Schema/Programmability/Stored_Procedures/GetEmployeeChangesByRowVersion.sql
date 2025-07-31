@@ -2,7 +2,7 @@
 AS
 BEGIN
   SELECT e.[EmployeeID]
-      ,e.[LastName] + ' ',e.[FirstName] as [Name]
+      ,e.[LastName] + ' '+e.[FirstName] as [Name]
       ,e.[Title]
       ,e.[BirthDate]
       ,e.[HireDate]

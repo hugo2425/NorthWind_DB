@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="FactSales"
   DTS:PackageType="5"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{47075D10-35B3-483D-B695-B5EE0695FC93}">
+  DTS:VersionBuild="35"
+  DTS:VersionGUID="{A5C55562-398B-40AD-95D2-E61496FFE3DA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -122,7 +122,7 @@
                 <property
                   dataType="System.String"
                   description="Asignaciones entre los parámetros del comando SQL y las variables."
-                  name="ParameterMapping">"0:Input",{EE869AD3-A767-43DB-922F-E5A8AA0005A6};"1:Input",{AAB14B76-EB16-403C-B68B-CEE2D4CF4365};</property>
+                  name="ParameterMapping">"@endRow:Input",{EE869AD3-A767-43DB-922F-E5A8AA0005A6};"@startRow:Input",{AAB14B76-EB16-403C-B68B-CEE2D4CF4365};</property>
               </properties>
               <connections>
                 <connection
@@ -449,6 +449,60 @@
                       cachedName="ProductSK"
                       externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductSK]"
                       lineageId="Package\DF Add New Rows\Lookup Product.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ProductSK]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[OrderID]"
+                      cachedDataType="i4"
+                      cachedName="OrderID"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[OrderID]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[OrderID]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[OrderDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OrderDate"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[OrderDate]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[OrderDate]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[CustomerSK]"
+                      cachedDataType="i4"
+                      cachedName="CustomerSK"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[CustomerSK]"
+                      lineageId="Package\DF Add New Rows\Lookup Customer.Outputs[Salida de entradas coincidentes de búsqueda].Columns[CustomerSK]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[EmployeeSK]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeSK"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[EmployeeSK]"
+                      lineageId="Package\DF Add New Rows\Lookup Employee.Outputs[Salida de entradas coincidentes de búsqueda].Columns[EmployeeSK]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[Quantity]"
+                      cachedDataType="i2"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Quantity]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[Discount]"
+                      cachedDataType="r4"
+                      cachedName="Discount"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Discount]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Discount]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[RequiredDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="RequiredDate"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[RequiredDate]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[RequiredDate]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[ShippedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ShippedDate"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShippedDate]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[ShippedDate]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[OrderDateKey]"
+                      cachedDataType="i4"
+                      cachedName="OrderDateKey"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[FactDateKey]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[OrderDateKey]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -466,7 +520,7 @@
                       name="OrderID" />
                     <externalMetadataColumn
                       refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[OrderDate]"
-                      dataType="dbTimeStamp"
+                      dataType="dbDate"
                       name="OrderDate" />
                     <externalMetadataColumn
                       refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[CustomerSK]"
@@ -492,6 +546,10 @@
                       refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShippedDate]"
                       dataType="dbDate"
                       name="ShippedDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[FactDateKey]"
+                      dataType="i4"
+                      name="FactDateKey" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -598,6 +656,66 @@
                       cachedName="UnitPrice"
                       externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[UnitPrice]"
                       lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[UnitPrice]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[ProductSK]"
+                      cachedDataType="i4"
+                      cachedName="ProductSK"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductSK]"
+                      lineageId="Package\DF Add New Rows\Lookup Product.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ProductSK]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[OrderID]"
+                      cachedDataType="i4"
+                      cachedName="OrderID"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[OrderID]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[OrderID]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[OrderDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="OrderDate"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[OrderDate]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[OrderDate]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[CustomerSK]"
+                      cachedDataType="i4"
+                      cachedName="CustomerSK"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[CustomerSK]"
+                      lineageId="Package\DF Add New Rows\Lookup Customer.Outputs[Salida de entradas coincidentes de búsqueda].Columns[CustomerSK]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[EmployeeSK]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeSK"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[EmployeeSK]"
+                      lineageId="Package\DF Add New Rows\Lookup Employee.Outputs[Salida de entradas coincidentes de búsqueda].Columns[EmployeeSK]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[Quantity]"
+                      cachedDataType="i2"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[Quantity]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[Discount]"
+                      cachedDataType="r4"
+                      cachedName="Discount"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[Discount]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Discount]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[RequiredDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="RequiredDate"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[RequiredDate]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[RequiredDate]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[ShippedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ShippedDate"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShippedDate]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[ShippedDate]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[OrderDateKey]"
+                      cachedDataType="i4"
+                      cachedName="OrderDateKey"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[FactDateKey]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[OrderDateKey]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -615,7 +733,7 @@
                       name="OrderID" />
                     <externalMetadataColumn
                       refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[OrderDate]"
-                      dataType="dbTimeStamp"
+                      dataType="dbDate"
                       name="OrderDate" />
                     <externalMetadataColumn
                       refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[CustomerSK]"
@@ -641,6 +759,10 @@
                       refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[ShippedDate]"
                       dataType="dbDate"
                       name="ShippedDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[FactDateKey]"
+                      dataType="i4"
+                      name="FactDateKey" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1165,7 +1287,7 @@ where [refTable].[ProductID] = ?</property>
                   expressionType="Notify"
                   name="SqlCommandParam"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[FactSales]) [refTable]
-where [refTable].[OrderID] = ?</property>
+where [refTable].[OrderID] = ? and [refTable].[ProductSK] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
@@ -1201,7 +1323,7 @@ where [refTable].[OrderID] = ?</property>
                   containsID="true"
                   dataType="System.String"
                   description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
-                  name="ParameterMap">#{Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[OrderID]};</property>
+                  name="ParameterMap">#{Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[OrderID]};#{Package\DF Add New Rows\Lookup Product.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ProductSK]};</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -1234,6 +1356,22 @@ where [refTable].[OrderID] = ?</property>
                           dataType="System.String"
                           description="Especifica la columna de la tabla de referencia con la que se combina una columna."
                           name="JoinToReferenceColumn">OrderID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Lookup Sales.Inputs[Entrada de búsqueda].Columns[ProductSK]"
+                      cachedDataType="i4"
+                      cachedName="ProductSK"
+                      lineageId="Package\DF Add New Rows\Lookup Product.Outputs[Salida de entradas coincidentes de búsqueda].Columns[ProductSK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">ProductSK</property>
                         <property
                           dataType="System.Null"
                           description="Especifica la columna de la tabla de referencia de la que se copia una columna."
@@ -1379,7 +1517,7 @@ where [refTable].[OrderID] = ?</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{B4ED7AA7-06EA-4683-9866-85BCF7AB5F50}"
-          SQLTask:SqlStatementSource="EXECUTE DW_MergeDimProduct;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="EXECUTE DW_MergeFactSales;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1413,10 +1551,10 @@ where [refTable].[OrderID] = ?</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{B4ED7AA7-06EA-4683-9866-85BCF7AB5F50}"
-          SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] @tableName='Product', @lastRowVersion=?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] @tableName='Sales', @lastRowVersion=?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
-            SQLTask:DtsVariableName="User::LastRowValue"
+            SQLTask:DtsVariableName="User::dbts"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="3"
             SQLTask:ParameterSize="-1" />
@@ -1621,21 +1759,55 @@ where [refTable].[OrderID] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="162,42"
-          Id="Package\DF Add New Rows\Get Row Changes"
-          TopLeft="353,39" />
-        <NodeLayout
-          Size="183,42"
-          Id="Package\DF Add New Rows\Load Star - New Rows"
-          TopLeft="467,469" />
+          Size="139,42"
+          Id="Package\DF Add New Rows\Load staging"
+          TopLeft="284,469" />
         <NodeLayout
           Size="141,42"
           Id="Package\DF Add New Rows\Lookup Sales"
           TopLeft="367,336" />
         <NodeLayout
-          Size="139,42"
-          Id="Package\DF Add New Rows\Load staging"
-          TopLeft="284,469" />
+          Size="183,42"
+          Id="Package\DF Add New Rows\Load Star - New Rows"
+          TopLeft="467,469" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DF Add New Rows\Lookup Customer"
+          TopLeft="353,111" />
+        <NodeLayout
+          Size="152,42"
+          Id="Package\DF Add New Rows\Lookup Product"
+          TopLeft="354,263" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\DF Add New Rows\Lookup Employee"
+          TopLeft="355,191" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\DF Add New Rows\Get Row Changes"
+          TopLeft="353,39" />
+        <EdgeLayout
+          Id="Package\DF Add New Rows.Paths[Salida de origen de OLE DB]"
+          TopLeft="433.75,81">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DF Add New Rows.Paths[Salida de entradas no coincidentes de búsqueda]"
           TopLeft="459.666666666667,378">
@@ -1669,6 +1841,78 @@ where [refTable].[OrderID] = ?</property>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-57.4723567708333,42.0126227208976,213.778046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Add New Rows.Paths[Salida de entradas coincidentes de búsqueda3]"
+          TopLeft="433.75,305">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31"
+              Start="0,0"
+              End="0,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,5.65234375,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Add New Rows.Paths[Salida de entradas coincidentes de búsqueda2]"
+          TopLeft="433,233">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,5.15234375,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF Add New Rows.Paths[Salida de entradas coincidentes de búsqueda1]"
+          TopLeft="434.75,153">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-99.8190234375,9.15234375,199.638046875,12.1953125"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1708,118 +1952,40 @@ where [refTable].[OrderID] = ?</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="161,42"
-          Id="Package\DF Add New Rows\Lookup Customer"
-          TopLeft="353,111" />
-        <EdgeLayout
-          Id="Package\DF Add New Rows.Paths[Salida de origen de OLE DB]"
-          TopLeft="433.75,81">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,30"
-              Start="0,0"
-              End="0,22.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="162,42"
-          Id="Package\DF Add New Rows\Lookup Employee"
-          TopLeft="355,191" />
-        <EdgeLayout
-          Id="Package\DF Add New Rows.Paths[Salida de entradas coincidentes de búsqueda1]"
-          TopLeft="434.75,153">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38"
-              Start="0,0"
-              End="0,30.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,9.15234375,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="152,42"
-          Id="Package\DF Add New Rows\Lookup Product"
-          TopLeft="354,263" />
-        <EdgeLayout
-          Id="Package\DF Add New Rows.Paths[Salida de entradas coincidentes de búsqueda2]"
-          TopLeft="433,233">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,30"
-              Start="0,0"
-              End="0,22.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,5.15234375,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DF Add New Rows.Paths[Salida de entradas coincidentes de búsqueda3]"
-          TopLeft="433.75,305">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,31"
-              Start="0,0"
-              End="0,23.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,23.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-99.8190234375,5.65234375,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DF Add New Rows\Get Row Changes">
+    design-time-name="Package\DF Add New Rows\Load staging">
     <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Add New Rows\Lookup Sales">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[FactSales]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
@@ -1839,48 +2005,12 @@ where [refTable].[OrderID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DF Add New Rows\Lookup Sales">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[FactSales]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DF Add New Rows\Load staging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DF Add New Rows\Lookup Customer">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1890,30 +2020,7 @@ where [refTable].[OrderID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DF Add New Rows\Lookup Employee">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimEmployee]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1926,7 +2033,7 @@ where [refTable].[OrderID] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1936,8 +2043,39 @@ where [refTable].[OrderID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Add New Rows\Lookup Employee">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimEmployee]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Add New Rows\Get Row Changes">
+    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>

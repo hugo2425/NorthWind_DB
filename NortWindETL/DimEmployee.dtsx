@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="DimEmployee"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{316ED018-8A19-4015-A197-F0983F4161DC}">
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{8EEAA819-3747-4C93-9B35-846FA875ABB6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -96,7 +96,8 @@
                   description="Especifica una instrucción SQL que usa parámetros para generar la tabla de búsqueda."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DimEmployee]) [refTable]
+where [refTable].[EmployeeID] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica el tipo de conexión utilizado para tener acceso al conjunto de datos de referencia."
@@ -132,7 +133,7 @@
                   containsID="true"
                   dataType="System.String"
                   description="Especifica la lista de identificadores de linaje que están asignados a los parámetros que usa la instrucción SQL de la propiedad SQLCommand. Las entradas de la lista están separadas por puntos y comas."
-                  name="ParameterMap"></property>
+                  name="ParameterMap">#{Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[EmployeeID]};</property>
                 <property
                   dataType="System.Int32"
                   description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
@@ -154,6 +155,24 @@
                 <input
                   refId="Package\DF Add New Rows\Búsqueda.Inputs[Entrada de búsqueda]"
                   name="Entrada de búsqueda">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Búsqueda.Inputs[Entrada de búsqueda].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[EmployeeID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia con la que se combina una columna."
+                          name="JoinToReferenceColumn">EmployeeID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
@@ -164,6 +183,22 @@
                   exclusionGroup="1"
                   name="Salida de entradas coincidentes de búsqueda"
                   synchronousInputId="Package\DF Add New Rows\Búsqueda.Inputs[Entrada de búsqueda]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Add New Rows\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[EmployeeSK]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copiar columna"
+                      lineageId="Package\DF Add New Rows\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[EmployeeSK]"
+                      name="EmployeeSK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Especifica la columna de la tabla de referencia de la que se copia una columna."
+                          name="CopyFromReferenceColumn">EmployeeSK</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
@@ -244,7 +279,7 @@
                 <property
                   dataType="System.String"
                   description="Asignaciones entre los parámetros del comando SQL y las variables."
-                  name="ParameterMapping">"0:Input",{46003DCF-7146-40FC-8AA3-8EF74BCBBD8A};"1:Input",{AA973ABA-2B71-4EBE-A907-19CCFFC3333E};</property>
+                  name="ParameterMapping">"@endRow:Input",{46003DCF-7146-40FC-8AA3-8EF74BCBBD8A};"@startRow:Input",{AA973ABA-2B71-4EBE-A907-19CCFFC3333E};</property>
               </properties>
               <connections>
                 <connection
@@ -259,46 +294,6 @@
                   refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB]"
                   name="Salida de origen de OLE DB">
                   <outputColumns>
-                    <outputColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[CustomerID]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[CustomerID]"
-                      length="5"
-                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[CustomerID]"
-                      name="CustomerID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[CompanyName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[CompanyName]"
-                      length="40"
-                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[CompanyName]"
-                      name="CompanyName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[ContactName]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[ContactName]"
-                      length="30"
-                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[ContactName]"
-                      name="ContactName"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[ContactTitle]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversión"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[ContactTitle]"
-                      length="30"
-                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[ContactTitle]"
-                      name="ContactTitle"
-                      truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Address]"
                       dataType="wstr"
@@ -340,48 +335,75 @@
                       name="Country"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Phone]"
-                      dataType="wstr"
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[EmployeeID]"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[Phone]"
-                      length="24"
-                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Phone]"
-                      name="Phone"
+                      externalMetadataColumnId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[EmployeeID]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[EmployeeID]"
+                      name="EmployeeID"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Fax]"
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Name]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversión"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[Fax]"
+                      externalMetadataColumnId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[Name]"
+                      length="31"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[Title]"
+                      length="30"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Title]"
+                      name="Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[BirthDate]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[HireDate]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[HireDate]"
+                      name="HireDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[PostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[PostalCode]"
+                      length="10"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[HomePhone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[HomePhone]"
                       length="24"
-                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Fax]"
-                      name="Fax"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[HomePhone]"
+                      name="HomePhone"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[CustomerID]"
-                      dataType="wstr"
-                      length="5"
-                      name="CustomerID" />
-                    <externalMetadataColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[CompanyName]"
-                      dataType="wstr"
-                      length="40"
-                      name="CompanyName" />
-                    <externalMetadataColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[ContactName]"
-                      dataType="wstr"
-                      length="30"
-                      name="ContactName" />
-                    <externalMetadataColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[ContactTitle]"
-                      dataType="wstr"
-                      length="30"
-                      name="ContactTitle" />
                     <externalMetadataColumn
                       refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[Address]"
                       dataType="wstr"
@@ -403,15 +425,37 @@
                       length="15"
                       name="Country" />
                     <externalMetadataColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[Phone]"
-                      dataType="wstr"
-                      length="24"
-                      name="Phone" />
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
                     <externalMetadataColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[Fax]"
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="31"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[HireDate]"
+                      dataType="dbTimeStamp"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[HomePhone]"
                       dataType="wstr"
                       length="24"
-                      name="Fax" />
+                      name="HomePhone" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -420,29 +464,32 @@
                   name="Salida de error de origen de OLE DB">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[CustomerID]"
-                      dataType="wstr"
-                      length="5"
-                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[CustomerID]"
-                      name="CustomerID" />
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[EmployeeID]"
+                      name="EmployeeID" />
                     <outputColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[CompanyName]"
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[Name]"
                       dataType="wstr"
-                      length="40"
-                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[CompanyName]"
-                      name="CompanyName" />
+                      length="31"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[Name]"
+                      name="Name" />
                     <outputColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[ContactName]"
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[Title]"
                       dataType="wstr"
                       length="30"
-                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[ContactName]"
-                      name="ContactName" />
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[Title]"
+                      name="Title" />
                     <outputColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[ContactTitle]"
-                      dataType="wstr"
-                      length="30"
-                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[ContactTitle]"
-                      name="ContactTitle" />
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[HireDate]"
+                      name="HireDate" />
                     <outputColumn
                       refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[Address]"
                       dataType="wstr"
@@ -462,23 +509,23 @@
                       lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[Region]"
                       name="Region" />
                     <outputColumn
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
                       refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[Country]"
                       dataType="wstr"
                       length="15"
                       lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[Country]"
                       name="Country" />
                     <outputColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[Phone]"
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[HomePhone]"
                       dataType="wstr"
                       length="24"
-                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[Phone]"
-                      name="Phone" />
-                    <outputColumn
-                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[Fax]"
-                      dataType="wstr"
-                      length="24"
-                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[Fax]"
-                      name="Fax" />
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[HomePhone]"
+                      name="HomePhone" />
                     <outputColumn
                       refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
                       dataType="i4"
@@ -596,6 +643,52 @@
                       cachedName="Country"
                       externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Country]"
                       lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="31"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Name]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Title"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Title]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[BirthDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="BirthDate"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[BirthDate]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[HireDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="HireDate"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[HireDate]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[HireDate]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PostalCode"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[PostalCode]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[HomePhone]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="HomePhone"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[HomePhone]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[HomePhone]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[EmployeeSK]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeSK"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[EmployeeSK]"
+                      lineageId="Package\DF Add New Rows\Búsqueda.Outputs[Salida de entradas coincidentes de búsqueda].Columns[EmployeeSK]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -779,6 +872,52 @@
                       cachedName="Country"
                       externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[Country]"
                       lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[EmployeeID]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="31"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[Name]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Title"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[Title]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[BirthDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="BirthDate"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[BirthDate]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[HireDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="HireDate"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[HireDate]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[HireDate]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PostalCode"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[PostalCode]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[HomePhone]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="HomePhone"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[HomePhone]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[HomePhone]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -982,7 +1121,7 @@
           SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] @tableName='Employee', @lastRowVersion=?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
-            SQLTask:DtsVariableName="User::LastRowValue"
+            SQLTask:DtsVariableName="User::dbts"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="3"
             SQLTask:ParameterSize="-1" />
@@ -1187,10 +1326,6 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="162,42"
-          Id="Package\DF Add New Rows\Get Row Changes"
-          TopLeft="353,39" />
-        <NodeLayout
           Size="183,42"
           Id="Package\DF Add New Rows\Load Star - New Rows"
           TopLeft="446,234" />
@@ -1202,6 +1337,46 @@
           Size="125,42"
           Id="Package\DF Add New Rows\Búsqueda"
           TopLeft="368,134" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\DF Add New Rows\Get Row Changes"
+          TopLeft="353,39" />
+        <EdgeLayout
+          Id="Package\DF Add New Rows.Paths[Salida de entradas coincidentes de búsqueda]"
+          TopLeft="411,176">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-81.5,56"
+              Start="0,0"
+              End="-81.5,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.824644549763" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.824644549763"
+                    Point2="0,22.824644549763"
+                    Point3="-4,22.824644549763" />
+                  <mssgle:LineSegment
+                    End="-77.5,22.824644549763" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-77.5,22.824644549763"
+                    Point2="-81.5,22.824644549763"
+                    Point3="-81.5,26.824644549763" />
+                  <mssgle:LineSegment
+                    End="-81.5,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-140.5690234375,27.824644549763,199.638046875,12.1953125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DF Add New Rows.Paths[Salida de origen de OLE DB]"
           TopLeft="432.25,81">
@@ -1260,53 +1435,9 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DF Add New Rows.Paths[Salida de entradas coincidentes de búsqueda]"
-          TopLeft="411,176">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-81.5,56"
-              Start="0,0"
-              End="-81.5,48.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.824644549763" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.824644549763"
-                    Point2="0,22.824644549763"
-                    Point3="-4,22.824644549763" />
-                  <mssgle:LineSegment
-                    End="-77.5,22.824644549763" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-77.5,22.824644549763"
-                    Point2="-81.5,22.824644549763"
-                    Point3="-81.5,26.824644549763" />
-                  <mssgle:LineSegment
-                    End="-81.5,48.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-140.5690234375,27.824644549763,199.638046875,12.1953125"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DF Add New Rows\Get Row Changes">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DF Add New Rows\Load Star - New Rows">
     <Properties>
@@ -1351,6 +1482,14 @@
         <Value
           type="q4:int">0</Value>
       </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Add New Rows\Get Row Changes">
+    <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>

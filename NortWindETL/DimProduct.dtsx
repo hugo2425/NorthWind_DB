@@ -11,8 +11,8 @@
   DTS:LocaleID="3082"
   DTS:ObjectName="DimProduct"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{C46AA2B0-4DD0-4ED4-B5FF-A4913FA0AB61}">
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{9D8FD7CA-EE54-4F26-A4F3-DA6873333F54}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -128,7 +128,7 @@ where [refTable].[ProductID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indica si se debe hacer referencia a metadatos en formato XML."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProductSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductName" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SupplierName" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SupplierPhone" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="CategoryName" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="UnitPrice" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UnitsInStock" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Estado" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ProductSK" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ProductName" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierName" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SupplierPhone" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CategoryName" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UnitPrice" dataType="DT_CY" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UnitsInStock" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Estado" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -279,7 +279,7 @@ where [refTable].[ProductID] = ?</property>
                 <property
                   dataType="System.String"
                   description="Asignaciones entre los parámetros del comando SQL y las variables."
-                  name="ParameterMapping">"0:Input",{C7B30E8C-923B-4267-8C05-44DABA7035BD};"1:Input",{59337B7E-3412-4A02-928C-8488556B9E03};</property>
+                  name="ParameterMapping">"@endRow:Input",{C7B30E8C-923B-4267-8C05-44DABA7035BD};"@startRow:Input",{59337B7E-3412-4A02-928C-8488556B9E03};</property>
               </properties>
               <connections>
                 <connection
@@ -360,6 +360,16 @@ where [refTable].[ProductID] = ?</property>
                       lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Discontinued]"
                       name="Discontinued"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Phone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[Phone]"
+                      length="24"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Phone]"
+                      name="Phone"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -394,6 +404,11 @@ where [refTable].[ProductID] = ?</property>
                       refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[Discontinued]"
                       dataType="bool"
                       name="Discontinued" />
+                    <externalMetadataColumn
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      name="Phone" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -418,6 +433,12 @@ where [refTable].[ProductID] = ?</property>
                       length="40"
                       lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[CompanyName]"
                       name="CompanyName" />
+                    <outputColumn
+                      refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[Phone]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[Phone]"
+                      name="Phone" />
                     <outputColumn
                       refId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de error de origen de OLE DB].Columns[CategoryName]"
                       dataType="wstr"
@@ -573,6 +594,13 @@ where [refTable].[ProductID] = ?</property>
                       cachedName="Discontinued"
                       externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[Estado]"
                       lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Discontinued]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].Columns[Phone]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="Phone"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierPhone]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Phone]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -582,26 +610,22 @@ where [refTable].[ProductID] = ?</property>
                       name="ProductSK" />
                     <externalMetadataColumn
                       refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductName]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="255"
                       name="ProductName" />
                     <externalMetadataColumn
                       refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierName]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="255"
                       name="SupplierName" />
                     <externalMetadataColumn
                       refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierPhone]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="SupplierPhone" />
                     <externalMetadataColumn
                       refId="Package\DF Add New Rows\Load staging.Inputs[Entrada de destino de OLE DB].ExternalColumns[CategoryName]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="100"
                       name="CategoryName" />
                     <externalMetadataColumn
@@ -761,6 +785,13 @@ where [refTable].[ProductID] = ?</property>
                       cachedName="CompanyName"
                       externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierName]"
                       lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[CompanyName]" />
+                    <inputColumn
+                      refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].Columns[Phone]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="Phone"
+                      externalMetadataColumnId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierPhone]"
+                      lineageId="Package\DF Add New Rows\Get Row Changes.Outputs[Salida de origen de OLE DB].Columns[Phone]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -774,26 +805,22 @@ where [refTable].[ProductID] = ?</property>
                       name="ProductID" />
                     <externalMetadataColumn
                       refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductName]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="255"
                       name="ProductName" />
                     <externalMetadataColumn
                       refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierName]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="255"
                       name="SupplierName" />
                     <externalMetadataColumn
                       refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[SupplierPhone]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="SupplierPhone" />
                     <externalMetadataColumn
                       refId="Package\DF Add New Rows\Load Star - New Rows.Inputs[Entrada de destino de OLE DB].ExternalColumns[CategoryName]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="100"
                       name="CategoryName" />
                     <externalMetadataColumn
@@ -952,7 +979,7 @@ where [refTable].[ProductID] = ?</property>
           SQLTask:SqlStatementSource="EXECUTE [dbo].[UpdateLastPackageRowVersion] @tableName='Product', @lastRowVersion=?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ParameterBinding
             SQLTask:ParameterName="0"
-            SQLTask:DtsVariableName="User::LastRowValue"
+            SQLTask:DtsVariableName="User::dbts"
             SQLTask:ParameterDirection="Input"
             SQLTask:DataType="3"
             SQLTask:ParameterSize="-1" />
@@ -1165,13 +1192,13 @@ where [refTable].[ProductID] = ?</property>
           Id="Package\DF Add New Rows\Load Star - New Rows"
           TopLeft="446,234" />
         <NodeLayout
-          Size="139,42"
-          Id="Package\DF Add New Rows\Load staging"
-          TopLeft="260,232" />
-        <NodeLayout
           Size="125,42"
           Id="Package\DF Add New Rows\Búsqueda"
           TopLeft="368,134" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\DF Add New Rows\Load staging"
+          TopLeft="260,232" />
         <EdgeLayout
           Id="Package\DF Add New Rows.Paths[Salida de origen de OLE DB]"
           TopLeft="432.25,81">
@@ -1291,25 +1318,12 @@ where [refTable].[ProductID] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DF Add New Rows\Load staging">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DF Add New Rows\Búsqueda">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -1319,10 +1333,23 @@ where [refTable].[ProductID] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Add New Rows\Load staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

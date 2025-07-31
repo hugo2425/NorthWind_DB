@@ -8,6 +8,7 @@ BEGIN
   SELECT p.[ProductID]
       ,p.[ProductName]
       ,s.[CompanyName]
+      ,s.[Phone]
       ,c.[CategoryName]
       ,p.[UnitPrice]
       ,p.[UnitsInStock]

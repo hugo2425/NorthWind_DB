@@ -81,5 +81,6 @@
     <Build Include="Schema\Programamability\StoredProcedures\DW_MergeDimEmployee.sql" />
     <Build Include="Schema\Programamability\StoredProcedures\DW_MergeDimProduct.sql" />
     <Build Include="Schema\Tables\staging\staging.sql" />
+    <Build Include="Schema\Programamability\StoredProcedures\DW_MergeFactSales.sql" />
   </ItemGroup>
 </Project>

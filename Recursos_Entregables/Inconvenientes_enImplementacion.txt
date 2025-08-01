@@ -1,0 +1,35 @@
+--Inconvenientes durante el proyecto:
+
+SQL Server 2016 (versión 13)  -> UPGRADE a SQL Server 2022 (versión 16).
+--Cambio de edición de licencia (Enterprise → Developer)
+--Cross-language error (Multiidioma)
+
+
+Definir el modelo que cubra el requerimiento del negocio:
+-Fact Sales (Solamente nos enfocamos en esta Fact)
+-Fact Inventarios
+-Fact Shipper
+
+Productividad de SQL Server, se ha notado menos productivo en Scripting vs por ejemplo vs "Toad for Oracle".
+
+En SSIS: tipos de datos en los Flows, por ejemplo
+NVARCHAR(50) - Unicode permite representar caracteres de cualquier idioma (tildes, símbolos especiales, caracter)
+VARCHAR(50)
+
+No nos aparecìa el Data Catalog como SSISDB o Catálogo de Integration Services
+
+
+Trabajo Colaborativo en GIT
+Git no tiene configurado tu nombre y correo electrónico, lo cual necesita para asociar los cambios del commit a un autor
+
+git config user.name "Tu Nombre"
+git config user.email "tu.email@ejemplo.com"
+
+COMMIT Utilizar un Token generado en GITHUB (Periodicidad 30 dias)
+
+
+--Como siguiente Fase:
+Subir a produccion el Cubo (Servidor Corporativo):
+- Verifica si SQL Server permite conexiones remotas -> “Permitir conexiones remotas a este servidor”.
+- Habilita el protocolo TCP/IP -> Abre el puerto en el Firewall del servidor
+- Inicios de sesión → Nuevo inicio de sesión usuario(Corporativo) en formato: DOMINIO\usuario o PC-NOMBRE\usuario
